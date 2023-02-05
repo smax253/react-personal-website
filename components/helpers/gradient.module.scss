@@ -1,0 +1,13 @@
+@import "../../styles/variables.scss";
+
+.gradient {
+    height: 20vh;
+    background: linear-gradient(180deg, rgba(253,240,225,1) 0%, rgba(238,223,205,1) 100%);
+}
+
+.gradientb { 
+    height: 20vh;
+    position: relative;
+    z-index: 5;
+    background: linear-gradient(180deg, rgba(238,223,205,1) 0%, #ddc2a2 100%); 
+}
