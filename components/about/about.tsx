@@ -7,12 +7,15 @@ import { Fade, AttentionSeeker } from "react-awesome-reveal";
 import { useCallback, useState } from "react";
 export const About = () => {
   const [smallHand, setSmallHand] = useState(false);
-  const handleReveal = useCallback((visible: boolean) => {
-    if (!visible || smallHand) return;
-    setTimeout(() => {
-      setSmallHand(true);
-    }, 2000);
-  }, []);
+  const handleReveal = useCallback(
+    (visible: boolean) => {
+      if (!visible || smallHand) return;
+      setTimeout(() => {
+        setSmallHand(true);
+      }, 2000);
+    },
+    [smallHand]
+  );
   return (
     <div className={styles.main}>
       <div>
