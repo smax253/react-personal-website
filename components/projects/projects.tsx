@@ -143,7 +143,7 @@ const Carousel = (props: { setSkillSelected: Function }) => {
       }, 10);
       return () => clearInterval(interval);
     }
-  }, [selected, rotate]);
+  }, [selected, rotate, setSkillSelected]);
   return (
     <div className={styles.carouselContainer}>
       <Fade

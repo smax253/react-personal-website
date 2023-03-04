@@ -54,7 +54,7 @@ export const Timeline = (props: { allTimelineElements: TimelineEntry[] }) => {
     [timelineWidth]
   );
 
-  const timelineScrollHandler = (event) => {
+  const timelineScrollHandler = () => {
     console.log(timelineWidth, timelineMonthWindow);
     const pixelsScrolled = timelineRef.current!.scrollLeft;
     const monthsScrolled = pixelsScrolled / monthWidthPx;
