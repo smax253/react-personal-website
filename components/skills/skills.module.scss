@@ -1,0 +1,59 @@
+.skillContentContainer{
+    position: sticky;
+    top: calc(100vh - 6rem);
+    border-radius: 1rem;
+
+    min-width: 30rem;
+    width: 80%;
+    height: 4rem;
+    z-index: 20;
+
+}
+.skillContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: calc(100% - 100vh + 4rem);
+    top: calc(100vh - 12rem);
+}
+.content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    &>h4{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+    }
+}
+.skillBar{
+    flex-grow: 1;
+    flex-basis: 0;
+    position: relative;
+}
+.skillBarContent{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 0.5rem;
+    gap: 0.1rem;
+}
+.currentBar{
+    background-color: rgb(25, 158, 43);
+    box-shadow: inset 0 0 1.5rem rgb(17, 233, 168);
+    z-index: 20;
+    transition: width 2s ease;
+}
+.progressBar{
+    background-color: rgb(162, 243, 172);
+    transition: width 1s ease;
+
+}
+.fastBar{
+    transition: width 0;
+    background-color: rgb(97, 96, 96);
+}

@@ -7,10 +7,11 @@ import { Fade, AttentionSeeker } from "react-awesome-reveal";
 import { useCallback, useState } from "react";
 export const About = () => {
   const [smallHand, setSmallHand] = useState(false);
-  const handleReveal = useCallback(() => {
+  const handleReveal = useCallback((visible) => {
+    if (!visible || smallHand) return;
     setTimeout(() => {
       setSmallHand(true);
-    }, 2500);
+    }, 2000);
   }, []);
   return (
     <div className={styles.main}>
@@ -26,24 +27,25 @@ export const About = () => {
           <AttentionSeeker
             triggerOnce
             effect="wobble"
-            delay={1000}
             onVisibilityChange={handleReveal}
+            fraction={0.95}
             className={smallHand ? styles.waveSmall : styles.wave}
           >
             👋
           </AttentionSeeker>
-          <Fade triggerOnce delay={4000}>
+
+          <Fade triggerOnce delay={3000}>
             <h1>Hi, I&apos;m Max!</h1>
           </Fade>
         </div>
-        <Fade triggerOnce cascade delay={5000}>
+        <Fade triggerOnce cascade delay={4000}>
           <div className={styles.overview}>
             <MdHomeWork />
             Software Engineer @ Orchard
           </div>
           <hr />
         </Fade>
-        <Fade triggerOnce cascade delay={6000}>
+        <Fade triggerOnce cascade delay={5000}>
           <div className={styles.overview}>
             <MdOutlineSchool />
             <div className={styles.leftAlign}>
@@ -55,7 +57,7 @@ export const About = () => {
           </div>
           <hr />
         </Fade>
-        <Fade triggerOnce delay={7000}>
+        <Fade triggerOnce delay={6000}>
           <p>
             I am a <b>full stack software engineer</b> passionate about building{" "}
             <span>impactful end-to-end features</span>, balancing{" "}
@@ -63,7 +65,7 @@ export const About = () => {
             <span>expandability</span>.
           </p>
         </Fade>
-        <Fade triggerOnce delay={8000}>
+        <Fade triggerOnce delay={7000}>
           <p>
             In my free time, I also enjoy gaming, food, traveling, and recently,
             not starving.

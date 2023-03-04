@@ -3,9 +3,9 @@ import Head from "next/head";
 import { Header } from "../components/shared/Header";
 
 import { Start } from "../components/start/start";
-import { Work } from "../components/work/work";
 import { Gradient, GradientB } from "../components/helpers/gradient";
 import About from "../components/about/about";
+import { WorkSkills } from "../components/work-skills-container/work-skills";
 
 const Home: NextPage = () => {
   return (
@@ -16,11 +16,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/icon.png" />
       </Head>
       <Header />
+
       <Start />
+
       <Gradient />
+
       <About />
+
       <GradientB />
-      <Work />
+
+      <WorkSkills />
     </>
   );
 };

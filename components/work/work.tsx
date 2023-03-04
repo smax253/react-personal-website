@@ -4,71 +4,17 @@ import goldman from "../../assets/goldman-sachs.png";
 import tda from "../../assets/td-ameritrade.png";
 import stevens from "../../assets/stevens.png";
 import orchard from "../../assets/orchard.png";
-import { useEffect, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 
-import { TransitionGroup } from "react-transition-group";
 import { Fade } from "react-awesome-reveal";
-
-type CompanyContent = {
-  company: string;
-  position: string;
-  location: string;
-  date: string;
-  accomplishments: string[];
-};
-type Company = "orchard" | "goldman" | "tda" | "sit";
-
-const content: Record<Company, CompanyContent> = {
-  orchard: {
-    company: "Orchard",
-    position: "Software Engineer",
-    location: "New York City, NY",
-    date: "July 2022 – present",
-    accomplishments: [
-      "milestone 1 where I did this",
-      "milestone 2 where I did this",
-      "milestone 3 where I did this",
-    ],
-  },
-  goldman: {
-    company: "Goldman Sachs",
-    position: "Technology Internal Audit Summer Analyst",
-    location: "New York City, NY",
-    date: "June 2021 – August 2021",
-    accomplishments: [
-      "milestone 1 where I did this",
-      "milestone 2 where I did this",
-      "milestone 3 where I did this",
-    ],
-  },
-  tda: {
-    company: "TD Ameritrade",
-    position: "Software Development Intern",
-    location: "Jersey City, NJ",
-    date: "May 2020 – August 2020",
-    accomplishments: [
-      "milestone 1 where I did this",
-      "milestone 2 where I did this",
-      "milestone 3 where I did this",
-    ],
-  },
-  sit: {
-    company: "Stevens Institute of Technology",
-    position: "Course Assistant",
-    location: "Hoboken, NJ",
-    date: "August 2019 – May 2022",
-    accomplishments: [
-      "milestone 1 where I did this",
-      "milestone 2 where I did this",
-      "milestone 3 where I did this",
-    ],
-  },
-};
+import { Company } from "../../models/company";
+import { COMPANY_CONTENT } from "../../constants/company-content";
+import { Experience } from "../../models/skills";
 
 const WorkContent = (props: { company: Company | undefined }) => {
   const [shownElement, setShownElement] = useState(<div></div>);
   const [visible, setVisible] = useState(false);
-  const currentContent = props.company && content[props.company];
+  const currentContent = props.company && COMPANY_CONTENT[props.company];
 
   const element = useMemo(
     () =>
@@ -112,14 +58,21 @@ const WorkContent = (props: { company: Company | undefined }) => {
   );
 };
 
-export const Work = () => {
-  const [selected, setSelected] = useState<Company | undefined>(undefined);
-
+export const Work = (props: {
+  setSelectedExperience: Dispatch<SetStateAction<Experience | undefined>>;
+}) => {
+  const [selectedCompany, setSelectedCompany] = useState<Company | undefined>(
+    undefined
+  );
+  const setSelected = (company: Company) => {
+    setSelectedCompany(company);
+    props.setSelectedExperience(company);
+  };
   return (
     <main className={styles.main}>
       <div className={styles.workContainer}>
         <div className={styles.logoContainers}>
-          <Fade triggerOnce delay={1000}>
+          <Fade triggerOnce delay={1500}>
             <button
               className={styles.logo}
               onClick={() => setSelected("orchard")}
@@ -136,21 +89,28 @@ export const Work = () => {
             </button>
           </Fade>
 
-          <Fade triggerOnce delay={3000}>
+          <Fade triggerOnce delay={2500}>
             <button className={styles.logo} onClick={() => setSelected("tda")}>
               <Image src={tda} alt="td ameritrade" />
             </button>
           </Fade>
 
-          <Fade triggerOnce delay={4000}>
+          <Fade triggerOnce delay={3000}>
             <button className={styles.logo} onClick={() => setSelected("sit")}>
               <Image src={stevens} alt="Stevens institute of technology" />
             </button>
           </Fade>
         </div>
-        <Fade triggerOnce delay={5500}>
+        <Fade
+          onVisibilityChange={(inView) => {
+            props.setSelectedExperience(inView ? selectedCompany : undefined);
+          }}
+        >
+          {" "}
+        </Fade>
+        <Fade delay={1000} triggerOnce>
           <div className={styles.content}>
-            <WorkContent company={selected} />
+            <WorkContent company={selectedCompany} />
           </div>
         </Fade>
       </div>
