@@ -175,7 +175,7 @@ export const Start = () => {
           <Fade triggerOnce delay={keyFrames[5]}>
             <div>
               <a
-                href={"https://www.linkedin.com/in/smax253/"}
+                href={"https://www.linkedin.com/in/max-shi/"}
                 target="_blank"
                 rel="noopener noreferrer"
               >
