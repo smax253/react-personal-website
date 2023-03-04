@@ -64,6 +64,7 @@
 }
 .carouselContainer {
   width: 70vw;
+  max-width: 100rem;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;

@@ -84,6 +84,7 @@ const Carousel = (props: { setSkillSelected: Function }) => {
     ...ALL_PROJECTS,
     ...ALL_PROJECTS,
     ...ALL_PROJECTS,
+    ...ALL_PROJECTS,
   ];
   const [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState<Project | undefined>(undefined);
