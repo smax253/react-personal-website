@@ -8,12 +8,10 @@
   padding: 0 2rem;
   justify-content: space-between;
   z-index: 10;
+  margin-top: 1rem;
 }
 
-.logo {
-  font-family: "Potta One", cursive;
-  font-size: 2.5rem;
-}
+
 .nav {
   display: flex;
   align-items: center;
@@ -24,7 +22,11 @@
   }
 }
 .active {
-  font-weight: 700;
+  font-weight: 700 ;
+  color: gray !important;
+}
+.linkText{
+  font-weight: 200;
 }
 
 .viewportWarning {
